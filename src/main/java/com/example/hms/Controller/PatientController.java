@@ -29,12 +29,12 @@ public class PatientController {
         return patientService.getPatientById(id);
     }
 
-    @PostMapping("/patients")
+    @PostMapping("/patients/register")
     public Patient addPatient(@RequestBody Patient patient){
         return patientService.addPatient(patient);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/patients/update")
     public Patient updatePatient(@RequestBody Patient patient){
         return patientService.updatePatient(patient);
     }

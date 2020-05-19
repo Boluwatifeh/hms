@@ -4,8 +4,6 @@ import com.example.hms.Entity.Patient;
 import com.example.hms.Repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.stylesheets.LinkStyle;
-
 import java.util.List;
 
 /**
@@ -31,11 +29,12 @@ public class PatientService {
 
     public String deletePatient(int id){
         patientRepository.deleteById(id);
-        return "Patient deleted successfully!" + id;
+        return "Patient deleted successfully! " + id;
     }
 
     public Patient updatePatient(Patient patient){
         Patient existingPatient = patientRepository.findById(patient.getId()).orElse(null);
+        assert existingPatient != null;
         existingPatient.setFirst_name(patient.getFirst_name());
         existingPatient.setMiddle_name(patient.getMiddle_name());
         existingPatient.setDob(patient.getDob());
