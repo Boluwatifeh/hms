@@ -1,10 +1,8 @@
 package com.example.hms.Controller;
-
 import com.example.hms.Entity.Patient;
 import com.example.hms.Service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 /**

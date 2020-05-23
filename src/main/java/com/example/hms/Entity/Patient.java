@@ -3,14 +3,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Patient {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -25,5 +25,9 @@ public class Patient {
     private String geno_type;
     private String record_status;
     private String date_created;
+
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // @JoinColumn(name = "md_fk", referencedColumnName = "id")
+    private List<MedicalHistory> medicalHistories;
 
 }

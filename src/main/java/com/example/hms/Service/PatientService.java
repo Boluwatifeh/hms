@@ -1,5 +1,4 @@
 package com.example.hms.Service;
-
 import com.example.hms.Entity.Patient;
 import com.example.hms.Repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +26,6 @@ public class PatientService {
         return patientRepository.save(patient);
     }
 
-    public String deletePatient(int id){
-        patientRepository.deleteById(id);
-        return "Patient deleted successfully! " + id;
-    }
-
     public Patient updatePatient(Patient patient){
         Patient existingPatient = patientRepository.findById(patient.getId()).orElse(null);
         assert existingPatient != null;
@@ -47,6 +41,11 @@ public class PatientService {
         existingPatient.setDate_created(patient.getDate_created());
         return patientRepository.save(existingPatient);
 
+    }
+
+    public String deletePatient(int id){
+        patientRepository.deleteById(id);
+        return "Patient deleted successfully! " + id;
     }
 
 }
